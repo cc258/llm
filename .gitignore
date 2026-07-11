@@ -1,7 +1,11 @@
 # 虚拟环境
+.env
 venv/
 env/
 .venv/
+
+# Jupyter Notebook 检查点
+.ipynb_checkpoints/
 
 # Python编译文件
 __pycache__/
