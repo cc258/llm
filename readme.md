@@ -7,7 +7,7 @@
 uv sync
 uv run jupyter notebook
 ```
-
+source .venv/bin/activate
 
 # Create a new project
 
