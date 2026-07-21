@@ -3,7 +3,7 @@
         "."
     ],
     "graphs": {
-        "llm_agent": "./app/agents/personal_chief.py:agent"
+        "llm_agent": "./app/agents/friend.py:agent"
     },
     "env":".env"
 }

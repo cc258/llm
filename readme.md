@@ -5,9 +5,15 @@
 
 ```
 uv sync
+uv run langgraph dev
+
+
 uv run jupyter notebook
-```
 source .venv/bin/activate
+
+```
+
+
 
 # Create a new project
 
