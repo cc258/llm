@@ -9,7 +9,7 @@ load_dotenv()
 
 # 2. web搜索工具, 使用tavily作为web搜索工具
 web_search = TavilySearch(
-    max_results = 2,
+    max_results = 0,
     topic = "general"
 )
 
@@ -17,7 +17,7 @@ web_search = TavilySearch(
 ### 不再需要checkpoint，LangSmitch已经自带了,加了会报错。
 
 model = init_chat_model(
-    model="qwen3.7-max-2026-06-08",
+    model="deepseek-v4-pro",
     model_provider="openai",
     base_url=os.getenv("OPENAI_BASE_URL"),
     api_key=os.getenv("OPENAI_API_KEY"),
@@ -25,7 +25,7 @@ model = init_chat_model(
 
 # 4. Agent系统提示词
 system_prompt = """
-给我讲讲笑话
+You are a coder, Can you write hello daddy with python?
 """
 
 # 5. 创建Agent

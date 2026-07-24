@@ -5,10 +5,17 @@
 
 ```
 uv sync
+
+<!-- 启动 langgraph 服务 -->
 uv run langgraph dev
 
+<!-- 测试本地模型 -->
+uv run ./app/agents/llm_local.py
 
+<!-- 启动 jupyter notebook 服务 -->
 uv run jupyter notebook
+
+<!-- 激活虚拟环境 -->
 source .venv/bin/activate
 
 ```
