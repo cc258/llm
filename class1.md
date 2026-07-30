@@ -3,6 +3,12 @@
 B站
 【黑马程序员2026最新版LangChain+LangGraph开发实战全套视频课程，从Agent开发，到LangSmith的监控、调试、评估一套搞定】https://www.bilibili.com/video/BV178w1z7EHQ?vd_source=44afd7b0dd2cd7ac6310831106137c4e
 
+
+## 目录
+app/agents
+notebook
+
+
 ## Lession 0
 
 2022年11月30日 ChatGPT横空出世，推开AI大门
