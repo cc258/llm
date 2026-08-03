@@ -7,26 +7,8 @@ services:
     restart: unless-stopped
     ports:
       - "8501:8501"
-    volumes:
-      - llm_data:/app/rag/chroma_db
-      - llm_data:/app/rag/md5.txt
     env_file:
       - .env
     environment:
       - PYTHONUNBUFFERED=1
       - STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
-    logging:
-      driver: json-file
-      options:
-        max-size: "10m"
-        max-file: "3"
-
-volumes:
-  llm_data:
-    name: llm-rag-data
