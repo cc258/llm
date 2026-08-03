@@ -76,3 +76,10 @@ LangChain 链是顺序执行的多个串联组件。
 
 
 
+# RAG
+
+### 离线流程
+
+User > WEB文件上传页面 > app_file_upload【上传页面】 > knowledge_base【知识库存储逻辑】 > Chroma向量库
+
+
