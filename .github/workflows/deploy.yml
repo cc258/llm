@@ -1,4 +1,4 @@
-name: Deploy with Docker
+name: Deploy with uv
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: appleboy/ssh-action@v1.0.3
+      - uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.TX_HOST }}
           username: ${{ secrets.TX_USER }}
@@ -19,5 +19,5 @@ jobs:
           script: |
             cd ~/www/github/llm
             git pull origin main
-            docker compose down -v
-            docker compose up -d --build
+            uv sync --frozen
+            sudo systemctl restart llm
