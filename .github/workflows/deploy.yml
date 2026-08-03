@@ -1,0 +1,39 @@
+# 部署到自建服务器的 GitHub Actions
+# 功能：推送代码后自动 SSH 到服务器部署
+
+name: Deploy to Server
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:  # 支持手动触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SERVER_PORT }}
+          script: |
+            cd ${{ secrets.DEPLOY_PATH }}
+            
+            # 拉取最新代码
+            git pull origin main
+            
+            # 使用 uv 同步依赖（更快更可靠）
+            # 参考: https://docs.astral.sh/uv/
+            uv sync --frozen
+            
+            # 重启 Streamlit 服务
+            sudo systemctl restart llm
+            
+            # 检查服务状态
+            sudo systemctl status llm --no-pager

@@ -1,7 +1,12 @@
+try:
+    from rag.secrets_loader import load_secrets
+    from rag import config_data as config
+except ImportError:
+    from secrets_loader import load_secrets
+    import config_data as config
+
 from langchain_chroma import Chroma
 from langchain_community.embeddings import DashScopeEmbeddings
-from secrets_loader import load_secrets
-import config_data as config
 
 load_secrets()
 

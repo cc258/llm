@@ -1,6 +1,6 @@
 import streamlit as st
-from rag import RagService
-from knowledage_base import KnowledgeBaseService
+from rag.rag import RagService
+from rag.knowledage_base import KnowledgeBaseService
 
 st.title("智能客服")
 st.divider()

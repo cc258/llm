@@ -1,11 +1,16 @@
 import os
-import config_data as config
 import hashlib
 from datetime import datetime
 from langchain_chroma import Chroma
 from langchain_community.embeddings import DashScopeEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from secrets_loader import load_secrets
+
+try:
+    from rag.secrets_loader import load_secrets
+    from rag import config_data as config
+except ImportError:
+    from secrets_loader import load_secrets
+    import config_data as config
 
 load_secrets()
 os.makedirs(config.KNOWLEDGE_PERSISTENT_DIR, exist_ok=True)

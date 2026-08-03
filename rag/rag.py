@@ -1,10 +1,17 @@
-from vector_stores import vectorStoreService
+try:
+    # 作为包导入时（项目根目录运行）
+    from rag.vector_stores import vectorStoreService
+    from rag.secrets_loader import load_secrets
+except ImportError:
+    # 直接运行时
+    from vector_stores import vectorStoreService
+    from secrets_loader import load_secrets
+
 from langchain_community.embeddings import DashScopeEmbeddings
 from langchain_community.chat_models import ChatTongyi
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
-from secrets_loader import load_secrets
 
 load_secrets()
 
