@@ -25,10 +25,10 @@ class RagService(object):
 
         # 2. Prompt 模板
         self.prompt = PromptTemplate.from_template("""
-        你是客服，从知识库中提取最相关的答案，如果没有相关信息，请回答“不知道”。
-        {context}
-        问题：{question}
-        答案：
+        从知识库中提取最相关的答案，如果没有相关信息，请回答“ -。=  抱歉，没有查到”。
+        
+        用户问题：{question}
+        回答：
         """)
 
         # 3. 大模型
@@ -45,7 +45,13 @@ class RagService(object):
     def _retrieve_context(self, question: str) -> str:
         """从向量库检索相关文档并拼接成上下文"""
         docs = self.retriever.invoke(question)
-        return "\n".join(doc.page_content for doc in docs)
+        if not docs:
+            return ""
+        # 给每段内容加上编号，帮助模型理解上下文
+        parts = []
+        for i, doc in enumerate(docs, 1):
+            parts.append(f"[{i}] {doc.page_content}")
+        return "\n".join(parts)
 
     def ask(self, question: str) -> str:
         """提问"""

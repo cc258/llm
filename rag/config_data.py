@@ -8,6 +8,6 @@ KNOWLEDGE_BASE_TXT = os.path.join(BASE_DIR, 'md5.txt')
 KNOWLEDGE_BASE_COLLECTION_NAME = 'rag'
 KNOWLEDGE_PERSISTENT_DIR = os.path.join(BASE_DIR, 'chroma_db')
 
-chunk_size = 30
-chunk_overlap = 8
-separators = ['\n', ' ', '', '\t', '\r', '.','!','?']
+chunk_size = 50
+chunk_overlap = 10
+separators = ['\n\n', '\n', '。', '！', '？', '!', '?', '.', ' ', '']

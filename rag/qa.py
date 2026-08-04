@@ -6,50 +6,72 @@ import streamlit as st
 from rag.rag import RagService
 from rag.knowledage_base import KnowledgeBaseService
 
-st.title("智能客服")
-st.divider()
+# —— 页面配置 ——
+st.set_page_config(page_title="AI", layout="wide")
 
-# 初始化服务
-if "RagService" not in st.session_state:
-    st.session_state.RagService = RagService()
-if "KnowledgeBaseService" not in st.session_state:
-    st.session_state.KnowledgeBaseService = KnowledgeBaseService()
+
+# —— 初始化服务 ——
+@st.cache_resource
+def init_services():
+    return RagService(), KnowledgeBaseService()
+
+rag_service, kb_service = init_services()
+
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# —— 上传知识区域 ——
-with st.expander("上传知识", expanded=False):
-    tab1, tab2 = st.tabs(["上传文件", "手动输入"])
+# —— 左侧栏：知识库管理 ——
+with st.sidebar:
+    st.header("知识库管理")
+
+    tab1, tab2 = st.tabs(["手动输入", "上传文件"])
 
     with tab1:
-        uploaded = st.file_uploader("选择 txt/csv 文件", type=["txt", "csv"])
-        if uploaded and st.button("上传文件"):
-            content = uploaded.read().decode("utf-8-sig")
-            res = st.session_state.KnowledgeBaseService.upload_by_str(content, uploaded.name)
+        manual_text = st.text_area("知识内容", height=120)
+        manual_name = st.text_input("知识名称", value="手动输入")
+        if st.button("上传文本", use_container_width=True, type="primary") and manual_text:
+            with st.spinner("上传中..."):
+                res = kb_service.upload_by_str(manual_text, manual_name)
             st.success(res)
 
     with tab2:
-        manual_text = st.text_area("输入知识: (如：我是大帅)")
-        if st.button("上传文本") and manual_text:
-            res = st.session_state.KnowledgeBaseService.upload_by_str(manual_text, "手动输入")
-            st.success(res)
+        uploaded = st.file_uploader("选择文件", type=["txt", "csv"])
+        if uploaded:
+            content = uploaded.read().decode("utf-8-sig")
+            if st.button("上传文件", use_container_width=True, type="primary"):
+                with st.spinner("上传中..."):
+                    res = kb_service.upload_by_str(content, uploaded.name)
+                st.success(res)
 
-st.divider()
+    st.divider()
+    st.caption("知识库持久化存储，重启不丢失")
 
-# 显示历史对话
+# —— 右侧主区域：聊天 ——
+st.title("AI")
+
+st.markdown("---")
+
+# 欢迎语
+if not st.session_state.messages:
+    st.info("你好！请在左侧上传知识库，然后开始提问吧")
+
+# 历史对话
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.write(msg["content"])
 
 # 用户输入
-prompt = st.chat_input()
+prompt = st.chat_input("输入你的问题...")
 
 if prompt:
     st.chat_message("user").write(prompt)
     st.session_state.messages.append({"role": "user", "content": prompt})
 
-    with st.spinner("AI is thinking..."):
-        res = st.session_state.RagService.ask(prompt)
+    with st.spinner("正在思考..."):
+        try:
+            res = rag_service.ask(prompt)
+        except Exception as e:
+            res = f"出错了：{e}"
 
     st.chat_message("assistant").write(res)
     st.session_state.messages.append({"role": "assistant", "content": res})
