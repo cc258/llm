@@ -19,5 +19,6 @@ jobs:
           script: |
             cd ~/www/github/llm
             git pull origin main
+            rm -rf rag/chroma_db rag/md5.txt
             uv sync --frozen
             sudo systemctl restart llm
