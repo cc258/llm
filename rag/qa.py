@@ -44,7 +44,7 @@ with st.sidebar:
                 st.success(res)
 
 # —— 右侧主区域：聊天 ——
-st.title("AI")
+st.title("AI问答")
 
 st.markdown("---")
 
