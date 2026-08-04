@@ -43,9 +43,6 @@ with st.sidebar:
                     res = kb_service.upload_by_str(content, uploaded.name)
                 st.success(res)
 
-    st.divider()
-    st.caption("知识库持久化存储，重启不丢失")
-
 # —— 右侧主区域：聊天 ——
 st.title("AI")
 
