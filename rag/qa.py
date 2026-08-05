@@ -43,6 +43,15 @@ with st.sidebar:
                     res = kb_service.upload_by_str(content, uploaded.name)
                 st.success(res)
 
+    
+    
+    st.divider()
+    st.caption("作者 Charlie/崔创")
+    st.caption("商务合作：15820285804")
+    st.caption("邮箱： cc258@qq.com")
+
+
+
 # —— 右侧主区域：聊天 ——
 st.title("AI问答")
 
