@@ -1,9 +1,0 @@
-{
-    "dependencies": [
-        "."
-    ],
-    "graphs": {
-        "llm_agent": "./app/agents/friend.py:agent"
-    },
-    "env":".env"
-}

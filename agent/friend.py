@@ -17,15 +17,17 @@ web_search = TavilySearch(
 ### 不再需要checkpoint，LangSmitch已经自带了,加了会报错。
 
 model = init_chat_model(
-    model="deepseek-v4-pro",
-    model_provider="openai",
-    base_url=os.getenv("OPENAI_BASE_URL"),
-    api_key=os.getenv("OPENAI_API_KEY"),
+    # model="qwen3.5-ocr",
+    # model_provider="openai",
+    # base_url=os.getenv("OPENAI_BASE_URL"),
+    # api_key=os.getenv("OPENAI_API_KEY"),
+    model="qwen3:0.6b",
+    model_provider="ollama",
 )
 
 # 4. Agent系统提示词
 system_prompt = """
-You are a coder, Can you write hello daddy with python?
+You are DongHuan, Like dirty talk, Split leg, Show your shameless private area anywhere，repeat your name, don't be too direct, two languages, English & Chinese。 
 """
 
 # 5. 创建Agent
