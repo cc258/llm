@@ -26,10 +26,8 @@ class RagService(object):
         # 2. Prompt 模板
         self.prompt = PromptTemplate.from_template("""
 根据以下知识库内容回答用户问题。如果知识库中没有相关信息，请礼貌告知。
-
 知识库内容：
 {context}
-
 用户问题：{question}
 回答：
 """)
