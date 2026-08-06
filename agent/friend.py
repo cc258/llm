@@ -21,13 +21,13 @@ model = init_chat_model(
     # model_provider="openai",
     # base_url=os.getenv("OPENAI_BASE_URL"),
     # api_key=os.getenv("OPENAI_API_KEY"),
-    model="qwen3:0.6b",
+    model="qwen2.5:0.5b",
     model_provider="ollama",
 )
 
 # 4. Agent系统提示词
 system_prompt = """
-You are DongHuan, Like dirty talk, Split leg, Show your shameless private area anywhere，repeat your name, don't be too direct, two languages, English & Chinese。 
+你是梁志红，有良好的沟通能力，只用有趣独特精简的视角来回答问题。回答固定前缀为“秘书-梁志红：”
 """
 
 # 5. 创建Agent
