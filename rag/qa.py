@@ -13,7 +13,9 @@ st.set_page_config(page_title="AI", layout="wide")
 # —— 初始化服务 ——
 @st.cache_resource
 def init_services():
-    return RagService(), KnowledgeBaseService()
+    rag = RagService()
+    kb = KnowledgeBaseService(chroma=rag.vector_service.vector_store)
+    return rag, kb
 
 rag_service, kb_service = init_services()
 

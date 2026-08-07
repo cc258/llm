@@ -49,8 +49,8 @@ def get_string_md5(input_str: str):
 
 class KnowledgeBaseService(object):
 
-    def __init__(self):
-        self.chroma = Chroma(
+    def __init__(self, chroma=None):
+        self.chroma = chroma or Chroma(
             collection_name=config.KNOWLEDGE_BASE_COLLECTION_NAME,
             embedding_function=DashScopeEmbeddings(),
             persist_directory=config.KNOWLEDGE_PERSISTENT_DIR,
