@@ -17,12 +17,10 @@ web_search = TavilySearch(
 ### 不再需要checkpoint，LangSmitch已经自带了,加了会报错。
 
 model = init_chat_model(
-    # model="qwen3.5-ocr",
-    # model_provider="openai",
-    # base_url=os.getenv("OPENAI_BASE_URL"),
-    # api_key=os.getenv("OPENAI_API_KEY"),
-    model="qwen2.5:0.5b",
-    model_provider="ollama",
+    model="qwen3.8-max",
+    model_provider="openai",
+    base_url=os.getenv("OPENAI_BASE_URL"),
+    api_key=os.getenv("OPENAI_API_KEY"),
 )
 
 # 4. Agent系统提示词

@@ -1,0 +1,14 @@
+[Unit]
+Description=LLM Agent Streamlit Service
+After=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/www/github/llm
+ExecStart=/root/www/github/llm/.venv/bin/streamlit run agent/app.py --server.port 8502 --server.address 127.0.0.1 --server.baseUrlPath /agent
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
