@@ -19,6 +19,9 @@ jobs:
           script: |
             cd ~/www/github/llm
             git pull origin main
+            # 先停止服务，避免 Chroma 底层 SQLite 句柄未释放导致 rm 不彻底
+            sudo systemctl stop llm-qa llm-agent || true
+            # 清理旧向量库及可能残留的 SQLite WAL/SHM 锁文件
             rm -rf rag/chroma_db rag/md5.txt
             uv sync --frozen
             sudo systemctl daemon-reload

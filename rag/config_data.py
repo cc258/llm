@@ -1,6 +1,5 @@
 import os
 
-# 当前文件所在目录的绝对路径
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 EMBEDDING_MODEL_NAME = 'qwen3.8-max'

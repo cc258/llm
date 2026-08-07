@@ -10,11 +10,10 @@ from langchain_community.embeddings import DashScopeEmbeddings
 
 load_secrets()
 
+
 class vectorStoreService(object):
 
     def __init__(self, embedding):
-
-        self.embedding = embedding
         self.vector_store = Chroma(
             collection_name=config.KNOWLEDGE_BASE_COLLECTION_NAME,
             embedding_function=embedding,
@@ -23,7 +22,6 @@ class vectorStoreService(object):
 
     def get_retriever(self):
         return self.vector_store.as_retriever(search_kwargs={"k": 3})
-
 
 
 if __name__ == '__main__':
