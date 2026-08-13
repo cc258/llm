@@ -119,19 +119,88 @@ notebook
 ```uv add notebook```
 
 
-## Lession 25 实战
+## Lession 13 Langchain 入门
 
-Langchain的Agent底层是基于LangGraph的。
-LangGraph提供了完整的后端部署功能，自带非常完善的后端接口，【可以不使用FastAPI】意思是能跑起来。
-同时Langchain也提供了基于LangSmith的GUI控制太实现Agent的调试，监控，一键部署。
-利用LangGraph，可以实现Agent的部署，监控，评估。
-通过LangSmith做测试。
+整个LangChain围绕着一个核心，就是Agent。
+
+LangChain是开发智能体工程的平台，基于LangGraph.
+
+LangSmith 是帮助开发人员调试，监控，评估，发布Agent的工具。
+
+LangSmith fleet 是零代码开发Agent的工具。
+
+
+### DeepAgents，Langchain，LangGraph 从左到右，是依赖关系
+
+DeepAgents 快速生成Agent的工具
+
+Langchain 自定义智能体模块的平台
+
+LangGraph 是Langchain的后端，提供了完整的后端部署功能，自带非常完善的后端接口，【可以不使用FastAPI】意思是能跑起来。
+
 
 QA：到底需不需要FastAPI？
 答案：
 - 只做独立智能体、快速部署、用官方 CLI 启动服务：**不需要 FastAPI**；
 - 对接自研业务系统、自定义接口、统一网关、深度私有化：**必须写 FastAPI 封装**。
 
+
+# 什么是Agent?
+
+Agent是能够感知环境，进行推理，自主决策，采取行动实现特定目标的智能系统。
+
+传统LLM，只能进行简单的对话，停留在文本生成。
+Agent，下达命令后，能够进行复杂的任务（如操作软件，发送邮件等），自主寻找路径。
+
+
+# class 18 提示词工程
+
+通过优化提示词，输出更符合业务的过程。
+
+- 身份角色： 描述AI的职责，沟通风格和总体目标。
+- 指令说明： 描述AI需要完成的任务，以及任务的详细要求。
+- 对话示例：
+- 背景信息：
+
+Markdown
+XML
+
+# class 19 Tools
+
+langchain 提供了工具的定义和执行功能,一般步骤：
+
+1. 用`tool`类。
+2. 定义工具的名称，描述，参数等。
+3. 实现工具的执行逻辑。
+
+定义一个天气的tool ...
+
+
+## Lession 21  短期记忆
+
+LangChain短期记忆文档
+
+https://docs.langchain.com/oss/python/langchain/short-term-memory#summarize-messages
+
+Trim messages
+Delete messages
+Summarize messages
+Custom strategies
+
+
+短期记忆——当前对话, 简单说就是要checkpoint, thread_id
+长期记忆——跨应用
+
+
+
+
+
+## Lession 25 实战
+
+QA：到底需不需要FastAPI？
+答案：
+- 只做独立智能体、快速部署、用官方 CLI 启动服务：**不需要 FastAPI**；
+- 对接自研业务系统、自定义接口、统一网关、深度私有化：**必须写 FastAPI 封装**。
 
 ### 配置LangSmith
 
