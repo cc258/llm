@@ -4,12 +4,19 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import streamlit as st
 from friend import agent
 
-st.title("AI Friend - 大白")
+st.title("AI Friend - 凯瑟琳")
 
 st.markdown(
     "<div style='text-align: right; color: #888; font-size: 12px; margin-top: -8px; margin-bottom: 20px;'>"
     "作者：Charlie / 崔创 &nbsp;|&nbsp; 商务合作：<a href='tel:15820285804' style='color: #888; text-decoration: none;'>15820285804</a> &nbsp;|&nbsp; "
     "邮箱：<a href='mailto:cc258@qq.com' style='color: #888; text-decoration: none;'>cc258@qq.com</a>"
+    "</div>",
+    unsafe_allow_html=True,
+)
+
+st.markdown(
+    "<div style='text-align: left; color: #888; font-size: 12px; margin-top: -8px; margin-bottom: 20px;'>"
+    "我是凯瑟琳，会中英双语，是个逗逼，你可以和我对话。"
     "</div>",
     unsafe_allow_html=True,
 )
