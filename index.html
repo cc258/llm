@@ -16,7 +16,7 @@
     align-items: center;
     padding: 60px 20px;
   }
-  header { text-align: center; margin-bottom: 50px; }
+  header { text-align: center; margin-bottom: 36px; }
   header h1 {
     font-size: 2.6rem;
     font-weight: 700;
@@ -27,6 +27,18 @@
     margin-bottom: 10px;
   }
   header p { color: #94a3b8; font-size: 1rem; }
+  .email {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 8px 20px;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 999px;
+    color: #38bdf8;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .email:hover { background: rgba(56, 189, 248, 0.12); border-color: rgba(56, 189, 248, 0.8); }
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -49,23 +61,29 @@
     border-color: rgba(56, 189, 248, 0.6);
     box-shadow: 0 12px 32px rgba(56, 189, 248, 0.15);
   }
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
   .icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
-    margin-bottom: 16px;
+    font-size: 20px;
+    flex-shrink: 0;
   }
   .i-blue { background: rgba(56, 189, 248, 0.15); }
   .i-green { background: rgba(52, 211, 153, 0.15); }
   .i-orange { background: rgba(251, 146, 60, 0.15); }
   .i-pink { background: rgba(244, 114, 182, 0.15); }
   .i-purple { background: rgba(167, 139, 250, 0.15); }
-  .card h2 { font-size: 1.25rem; margin-bottom: 8px; color: #f1f5f9; }
-  .card p { font-size: 0.9rem; color: #94a3b8; line-height: 1.5; margin-bottom: 14px; }
+  .card h2 { font-size: 1.25rem; color: #f1f5f9; }
+  .card p { font-size: 0.9rem; color: #94a3b8; line-height: 1.5; margin-bottom: 10px; }
   .card .url {
     font-size: 0.8rem;
     color: #38bdf8;
@@ -73,55 +91,67 @@
     word-break: break-all;
   }
   footer {
-    margin-top: 60px;
+    margin-top: 40px;
     color: #64748b;
     font-size: 0.85rem;
+    line-height: 1.9;
+    max-width: 900px;
+    text-align: center;
   }
+  footer .flow span { color: #94a3b8; }
+  footer .flow span::after { content: " ｜ "; color: #475569; }
+  footer .flow span:last-child::after { content: ""; }
 </style>
 </head>
 <body>
 <header>
-  <h1>LLM 项目导航</h1>
-  <p>基于 LLM 的 RAG 问答、Agent、FastAPI 影视与 3D 应用集合</p>
+  <h1>Charlie的个人技术导航</h1>
+  <p>RAG 问答、Agent、FastAPI 影视与 3D 应用集合</p>
+  <a class="email" href="mailto:cc258@qq.com">✉️ cc258@qq.com</a>
 </header>
 
 <main class="grid">
   <a class="card" href="http://134.175.70.95:8501/">
-    <div class="icon i-blue">📚</div>
-    <h2>RAG 问答</h2>
+    <div class="card-head"><div class="icon i-blue">📚</div><h2>RAG 问答</h2></div>
     <p>基于检索增强生成（RAG）的知识库问答系统，Streamlit 构建</p>
     <div class="url">http://134.175.70.95:8501/</div>
   </a>
 
   <a class="card" href="http://134.175.70.95:8502/">
-    <div class="icon i-green">🤖</div>
-    <h2>Agent</h2>
+    <div class="card-head"><div class="icon i-green">🤖</div><h2>Agent</h2></div>
     <p>具备工具调用能力的智能体应用，支持多轮对话与任务执行</p>
     <div class="url">http://134.175.70.95:8502/</div>
   </a>
 
   <a class="card" href="http://134.175.70.95:8888/">
-    <div class="icon i-orange">🎬</div>
-    <h2>FastAPI Movie</h2>
+    <div class="card-head"><div class="icon i-orange">🎬</div><h2>FastAPI Movie</h2></div>
     <p>影视信息展示站点，FastAPI + React 前后台分离架构</p>
     <div class="url">http://134.175.70.95:8888</div>
   </a>
 
   <a class="card" href="http://134.175.70.95:8889/list/search-table">
-    <div class="icon i-pink">🛠️</div>
-    <h2>FastAPI Movie Management</h2>
+    <div class="card-head"><div class="icon i-pink">🛠️</div><h2>FastAPI Movie Management</h2></div>
     <p>影视数据后台管理系统，支持数据的增删改查</p>
     <div class="url">http://134.175.70.95:8889</div>
   </a>
 
   <a class="card" href="http://134.175.70.95:82/">
-    <div class="icon i-purple">🚀</div>
-    <h2>3D &amp; Three.js</h2>
+    <div class="card-head"><div class="icon i-purple">🚀</div><h2>3D &amp; Three.js</h2></div>
     <p>Space Autopilot —— 基于 Three.js 的 3D 太空自动驾驶演示</p>
     <div class="url">http://134.175.70.95:82</div>
   </a>
 </main>
 
-<footer>LLM Project · Powered by Streamlit / FastAPI / Three.js</footer>
+<footer>
+  <div>Charlie的个人技术导航 · 从设计到发布，全流程</div>
+  <div class="flow">
+    <span>设计 HTML / CSS / JavaScript</span>
+    <span>前端 React / Vite / Three.js / Streamlit</span>
+    <span>后端 Python / FastAPI / SQLModel / SQLite</span>
+    <span>AI LangChain / LangGraph / RAG / Chroma / Ollama / 通义千问</span>
+    <span>工程化 uv / Git / GitHub Actions</span>
+    <span>发布 Caddy / systemd / 腾讯云</span>
+  </div>
+</footer>
 </body>
 </html>
