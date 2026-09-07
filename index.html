@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LLM 导航</title>
+<title>Charlie的花活</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -27,6 +27,13 @@
     margin-bottom: 10px;
   }
   header p { color: #94a3b8; font-size: 1rem; }
+  .contacts {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
   .email {
     display: inline-block;
     margin-top: 18px;
@@ -105,52 +112,55 @@
 </head>
 <body>
 <header>
-  <h1>Charlie的个人技术导航</h1>
+  <h1>Charlie的花活</h1>
   <p>RAG 问答、Agent、FastAPI 影视与 3D 应用集合</p>
-  <a class="email" href="mailto:cc258@qq.com">✉️ cc258@qq.com</a>
+  <div class="contacts">
+    <a class="email" href="mailto:cc258@qq.com">✉️ cc258@qq.com</a>
+    <a class="email" href="https://t.me/charlie_space" target="_blank" rel="noopener">✈️ @charlie_space</a>
+  </div>
 </header>
 
 <main class="grid">
-  <a class="card" href="http://134.175.70.95:8501/">
+  <a class="card" href="http://134.175.70.95:8501/" target="_blank">
     <div class="card-head"><div class="icon i-blue">📚</div><h2>RAG 问答</h2></div>
     <p>基于检索增强生成（RAG）的知识库问答系统，Streamlit 构建</p>
     <div class="url">http://134.175.70.95:8501/</div>
   </a>
 
-  <a class="card" href="http://134.175.70.95:8502/">
+  <a class="card" href="http://134.175.70.95:8502/" target="_blank">
     <div class="card-head"><div class="icon i-green">🤖</div><h2>Agent</h2></div>
     <p>具备工具调用能力的智能体应用，支持多轮对话与任务执行</p>
     <div class="url">http://134.175.70.95:8502/</div>
   </a>
 
-  <a class="card" href="http://134.175.70.95:8888/">
-    <div class="card-head"><div class="icon i-orange">🎬</div><h2>FastAPI Movie</h2></div>
+  <a class="card" href="http://134.175.70.95:8888/" target="_blank">
+    <div class="card-head"><div class="icon i-orange">🎬</div><h2>Movie</h2></div>
     <p>影视信息展示站点，FastAPI + React 前后台分离架构</p>
     <div class="url">http://134.175.70.95:8888</div>
   </a>
 
-  <a class="card" href="http://134.175.70.95:8889/list/search-table">
-    <div class="card-head"><div class="icon i-pink">🛠️</div><h2>FastAPI Movie Management</h2></div>
+  <a class="card" href="http://134.175.70.95:8889/list/search-table" target="_blank">
+    <div class="card-head"><div class="icon i-pink">🛠️</div><h2>Movie Management</h2></div>
     <p>影视数据后台管理系统，支持数据的增删改查</p>
     <div class="url">http://134.175.70.95:8889</div>
   </a>
 
-  <a class="card" href="http://134.175.70.95:82/">
+  <a class="card" href="http://134.175.70.95:82/" target="_blank">
     <div class="card-head"><div class="icon i-purple">🚀</div><h2>3D &amp; Three.js</h2></div>
-    <p>Space Autopilot —— 基于 Three.js 的 3D 太空自动驾驶演示</p>
+    <p>太空自动驾驶演示 / 基于 Three.js 的 3D</p>
     <div class="url">http://134.175.70.95:82</div>
   </a>
 </main>
 
 <footer>
-  <div>Charlie的个人技术导航 · 从设计到发布，全流程</div>
+  <div>一个人，从想法到落地</div>
   <div class="flow">
     <span>设计 HTML / CSS / JavaScript</span>
     <span>前端 React / Vite / Three.js / Streamlit</span>
     <span>后端 Python / FastAPI / SQLModel / SQLite</span>
-    <span>AI LangChain / LangGraph / RAG / Chroma / Ollama / 通义千问</span>
+    <span>AI LangChain / LangGraph / RAG / Chroma / Ollama </span>
     <span>工程化 uv / Git / GitHub Actions</span>
-    <span>发布 Caddy / systemd / 腾讯云</span>
+    <span>发布 Caddy / systemd / Cloud</span>
   </div>
 </footer>
 </body>
