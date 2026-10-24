@@ -31,7 +31,7 @@ uv add streamlit dashscope langchain_community langchain_chroma chromadb openai
 ### 前后端一起运行
 
 ```
-uv run streamlit run app_file_upload.py
+uv run streamlit run qa.py
 ```
 
 
