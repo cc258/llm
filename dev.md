@@ -10,7 +10,17 @@ uv sync
 uv run langgraph dev
 
 <!-- 测试本地模型 -->
-uv run ./app/agents/llm_local.py
+
+# 第 1 步：Chroma 服务器（必须先启动，Streamlit 连它）
+uv run chroma run chroma.yaml
+
+# 第 2 步：RAG 问答（另开终端）
+uv run streamlit run rag/qa.py --server.port 8501 --server.address 0.0.0.0
+
+# 第 3 步：Agent 凯瑟琳（另开终端）
+uv run streamlit run agent/app.py --server.port 8502 --server.address 0.0.0.0
+
+
 
 <!-- 启动 jupyter notebook 服务 -->
 uv run jupyter notebook
