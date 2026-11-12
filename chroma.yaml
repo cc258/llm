@@ -1,0 +1,11 @@
+# Chroma 服务器配置（供 Chroma UI 等外部工具通过 HTTP 连接）
+# 启动：uv run chroma run chroma.yaml
+port: 8000
+listen_address: "127.0.0.1"
+persist_path: "rag/chroma_db"
+# 允许浏览器端 UI 跨域访问（本地开发用 *，生产环境应限定具体域名）
+cors_allow_origins: ["*"]
+allow_reset: false
+sqlitedb:
+  hash_type: "md5"
+  migration_mode: "apply"

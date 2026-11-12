@@ -2,7 +2,6 @@ import os
 import re
 import hashlib
 from datetime import datetime
-from langchain_chroma import Chroma
 from langchain_community.embeddings import DashScopeEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
@@ -21,9 +20,11 @@ def clean_text(text: str) -> str:
 try:
     from rag.secrets_loader import load_secrets
     from rag import config_data as config
+    from rag.vector_stores import build_chroma
 except ImportError:
     from secrets_loader import load_secrets
     import config_data as config
+    from vector_stores import build_chroma
 
 load_secrets()
 
@@ -50,10 +51,9 @@ def get_string_md5(input_str: str):
 class KnowledgeBaseService(object):
 
     def __init__(self, chroma=None):
-        self.chroma = chroma or Chroma(
+        self.chroma = chroma or build_chroma(
             collection_name=config.KNOWLEDGE_BASE_COLLECTION_NAME,
             embedding_function=DashScopeEmbeddings(),
-            persist_directory=config.KNOWLEDGE_PERSISTENT_DIR,
         )
         self.splitter = RecursiveCharacterTextSplitter(
             chunk_size=config.chunk_size,

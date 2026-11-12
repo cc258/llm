@@ -17,7 +17,7 @@ web_search = TavilySearch(
 ### 不再需要checkpoint，LangSmitch已经自带了,加了会报错。
 
 model = init_chat_model(
-    model="qwen3.8-max",
+    model=os.getenv("MODEL"),
     model_provider="openai",
     base_url=os.getenv("OPENAI_BASE_URL"),
     api_key=os.getenv("OPENAI_API_KEY"),

@@ -1,3 +1,5 @@
+import os
+
 try:
     # 作为包导入时（项目根目录运行）
     from rag.vector_stores import vectorStoreService
@@ -8,7 +10,7 @@ except ImportError:
     from secrets_loader import load_secrets
 
 from langchain_community.embeddings import DashScopeEmbeddings
-from langchain_community.chat_models import ChatTongyi
+from langchain.chat_models import init_chat_model
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
@@ -32,8 +34,13 @@ class RagService(object):
         回答：
         """)
 
-        # 3. 大模型
-        self.chat_model = ChatTongyi()
+        # 3. 大模型（与 Agent 统一走 OpenAI 兼容模式，由 .env 的 MODEL 控制）
+        self.chat_model = init_chat_model(
+            model=os.getenv("MODEL", "qwen3.8-omni-flash"),
+            model_provider="openai",
+            base_url=os.getenv("OPENAI_BASE_URL"),
+            api_key=os.getenv("OPENAI_API_KEY"),
+        )
 
         # 4. 构建 RAG 链：检索 -> 拼接上下文 -> 填充prompt -> 调用模型 -> 解析输出
         self.chain = (
